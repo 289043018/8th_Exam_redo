@@ -20,7 +20,7 @@
 	<!-- 默认视图主题,一下3句话是将struts2的标签样式设置为空，方便我们调整页面样式 -->
   <constant name="struts.ui.theme" value="simple"/> 
     <constant name="struts.ui.templateDir" value="template"/> 
-   <constant name="struts.ui.templateSuffix" value="ftl"/>
+   <constant name="struts.ui.templateSuffix" value="ftl"/> 
 
 <constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
@@ -32,6 +32,9 @@
 			<!-- <result name="success">/jsp/index.jsp</result> -->
 			<result name="fail">/jsp/fail.jsp</result>
 			<result name="success" type="redirectAction">listCustomer!list</result>
+			<result name="input" type="redirect">
+			<param name="location">/jsp/login.jsp</param>
+			</result>
 		</action>
 		<action name="listCustomer" class="com.hand.action.doCustomerAction" method="list">
 		<result name="success">/jsp/index.jsp</result>
