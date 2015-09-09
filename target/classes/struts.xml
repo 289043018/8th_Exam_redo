@@ -30,7 +30,7 @@
 		<!-- action相当于以前的servlet的概念，对应一个请求name为请求的url地址 localhost：8080/项目名/new/login.do -->
 		<action name="login" class="com.hand.action.LoginAction">
 			<!-- <result name="success">/jsp/index.jsp</result> -->
-			<result name="fail">/jsp/fail.jsp</result>
+			<!-- <result name="fail">/jsp/fail.jsp</result> -->
 			<result name="success" type="redirectAction">listCustomer!list</result>
 			<result name="input" type="redirect">
 			<param name="location">/jsp/login.jsp</param>

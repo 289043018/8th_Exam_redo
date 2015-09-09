@@ -1,5 +1,9 @@
 package com.hand.action;
 
+import java.io.PrintWriter;
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -17,10 +21,22 @@ public class LoginAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession(); 
+/*		
+		if(uname.equals("admin")){
+			ServletResponse response = ServletActionContext.getResponse();
+			PrintWriter out = response.getWriter();
+			System.out.println("{\"uname\":\"" + uname  + "}");  
+			out.print("{\"uname\":\"" + uname  + "}");  
+	          
+	        out.flush();  
+	        out.close();  
+		}
+		*/
+		
+		
 		
 			 if (uname == null || uname.trim().equals("")||pword == null || pword.trim().equals(""))
 		      {
-		    	   
 		        	session.setAttribute("login_message", "用户名或者密码不能为空！");
 		        	return "input";
 		      }else{

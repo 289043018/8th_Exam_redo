@@ -15,8 +15,15 @@
 			alert("请输入用户名或密码！");
 			document.forms.loginForm.userName.focus();
 			return false;
-		}
-	}
+		};
+	};
+	function chakan(){
+		$.post("<%=path%>/login.action",{uname:"admin"},function(data){
+			$("#result").text(data);
+		});
+	};
+	
+	
 </script>
 </head>
 <body>
@@ -51,6 +58,8 @@
                         <div class="col-sm-offset-4 col-md-4">
                        
                           <button type="submit" class="btn btn-default">登录</button>
+                       <!--    <button type="submit" class="btn btn-default" onclick="chakan()">查看</button>
+                          <span id="result"></span> -->
                         </div>
                     </div>
                 </form>
