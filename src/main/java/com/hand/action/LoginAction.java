@@ -18,8 +18,7 @@ public class LoginAction extends ActionSupport {
 	private String uname;
 	private String pword;
 	private int pagecount;
-	@Override
-	public String execute() throws Exception {
+	public String Login() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession(); 
 /*		
 		if(uname.equals("admin")){
@@ -38,7 +37,7 @@ public class LoginAction extends ActionSupport {
 			 if (uname == null || uname.trim().equals("")||pword == null || pword.trim().equals(""))
 		      {
 		        	session.setAttribute("login_message", "用户名或者密码不能为空！");
-		        	return "input";
+		        	return "tologin";
 		      }else{
 		    	  CustomerDao customerDao = new CustomerDao();  
 		 		 Customer customer = new Customer(); 
@@ -47,13 +46,13 @@ public class LoginAction extends ActionSupport {
 		 	        if(customerDao.check(customer)) {
 		 	        	session.removeAttribute("login_message");
 		 	        	PageDao pageDao = new PageDao();
-		 	        	int pagecount = pageDao.getPageCount(50);
+		 	        	int pagecount = pageDao.getPageCount();
 		 	        	System.out.println("获得的总页数："+pagecount);
 		 	        	session.setAttribute("pagecount", pagecount);
 		 	        	return SUCCESS;  
 		 	        }
 		 	        session.setAttribute("login_message", "用户名或者密码错误！");
-		 	        return "input";
+		 	        return "tologin";
 		      }
 	}
 	
@@ -70,19 +69,4 @@ public class LoginAction extends ActionSupport {
 	public void setPword(String pword) {
 		this.pword = pword;
 	}
-	
-	/*public void validate()
-	   {
-	      if (uname == null || uname.trim().equals(""))
-	      {
-//	         addFieldError("uname","The name is required");
-	    	  HttpSession session = ServletActionContext.getRequest().getSession();  
-	        	session.setAttribute("login_message", "error");  
-	      }
-	      if (pword == null || pword.trim().equals(""))
-	      {
-	         addFieldError("pword","The pword is required");
-	      }
-	   }
-*/
 }

@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="head">
 			<a class="btn btn-primary"
-				href="<%= request.getContextPath() %>/logout.action">退出</a>
+				href="<%= request.getContextPath() %>/Logout_Logout!Logout.action">退出</a>
 		</div>
 		<div class="body">
 			<div class="menu">

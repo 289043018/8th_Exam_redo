@@ -22,7 +22,6 @@ public class doCustomerAction extends ActionSupport {
 	private Address address;
 	private int address_id;
 	private int delet_id;
-	
 	private int pagenum = 1;
 	
 	public String add() throws Exception {
@@ -66,9 +65,9 @@ public class doCustomerAction extends ActionSupport {
 		AddressDao addressDao = new AddressDao();
 		 List<Address> addressList = addressDao.select();
 		ActionContext.getContext().put("addressList", addressList);
-		PageDao pageDao = new PageDao();
-		int pagecount = pageDao.getPageCount(50);
-		System.out.println("获得的总页数："+pagecount);
+//		PageDao pageDao = new PageDao();
+//		int pagecount = pageDao.getPageCount();
+//		System.out.println("获得的总页数："+pagecount);
 		return SUCCESS;
 	}
 	

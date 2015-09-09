@@ -22,7 +22,7 @@ public class PageDao {
 	
 	
 	
-	public int  getPageCount(int rowsPerPage){
+	public int  getPageCount(){
 		int rows = 0; 
    	 tx = session.beginTransaction();
 //   	 List<Customer> customer = session.createQuery("FROM Customer").setFirstResult((pagenum-1)*pagesize).setMaxResults(pagesize).list();

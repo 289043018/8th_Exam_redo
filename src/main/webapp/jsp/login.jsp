@@ -38,7 +38,7 @@
                 </div>
                  
                 <div class="panel-body">
-                   <form class="form-horizontal" role="form" action="<%= request.getContextPath()%>/login.action" Method="post" name="loginForm">
+                   <form class="form-horizontal" role="form" action="<%= request.getContextPath()%>/Login_Login!Login.action" Method="post" name="loginForm">
                     <div class="form-group">
                         <label class="col-md-4 control-label">用户名：</label>
                         <div class="col-md-4">

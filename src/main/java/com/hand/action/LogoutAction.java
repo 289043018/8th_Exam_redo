@@ -15,11 +15,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import freemarker.template.utility.Execute;
 
 public class LogoutAction extends ActionSupport{
-	@Override
-	public String execute() throws Exception {
+	public String Logout() throws Exception {
 	    HttpServletRequest request = ServletActionContext.getRequest();
 	    HttpSession session = request.getSession();
 	    session.invalidate();
-		return SUCCESS;
+		return "tologin";
 	}
 }

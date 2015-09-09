@@ -27,29 +27,17 @@
 	<!-- package标签包标签，用于区分不同的请求文件的标签，比方说 网站前台请求和网站后台请求 -->
 	<!-- name属性：包名，用于被别的包调用或者继承 -->
 	<package name="login" extends="struts-default">
-		<!-- action相当于以前的servlet的概念，对应一个请求name为请求的url地址 localhost：8080/项目名/new/login.do -->
-		<action name="login" class="com.hand.action.LoginAction">
-			<!-- <result name="success">/jsp/index.jsp</result> -->
-			<!-- <result name="fail">/jsp/fail.jsp</result> -->
-			<result name="success" type="redirectAction">listCustomer!list</result>
-			<result name="input" type="redirect">
-			<param name="location">/jsp/login.jsp</param>
-			</result>
-		</action>
 		<action name="listCustomer" class="com.hand.action.doCustomerAction" method="list">
 		<result name="success">/jsp/index.jsp</result>
-		
-		</action>
-		<action name="logout" class="com.hand.action.LogoutAction">
-		<result name="success" type="redirect">
-			<param name="location">/jsp/login.jsp</param>
-		</result>
 		</action>
 		<action name="*_*" class="com.hand.action.{1}Action" method="{2}">
 		<interceptor-ref name="defaultStack"/>
 		<result name="success" type="redirectAction">listCustomer!list</result>
 		<result name="toadd">/jsp/addCustomer.jsp</result>
 		<result name="toupdate">/jsp/edit.jsp</result>
+		<result name="tologin" type="redirect">
+			<param name="location">/jsp/login.jsp</param>
+			</result>
 		</action>
 	</package>
 	
