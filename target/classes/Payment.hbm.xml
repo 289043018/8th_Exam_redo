@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>  
+    <class name="com.hand.POJO.Payment" table="payment">  
+        <id name="payment_id" column="payment_id" type= "integer">  
+            <generator class="native" />  
+        </id>  
+        <property name="customer_id" column="customer_id" type="integer" />
+        <property name="rental_id" column="rental_id" type="integer" />
+    </class>  
+</hibernate-mapping> 

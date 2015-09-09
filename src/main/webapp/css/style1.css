@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+	padding-top:0px;
+
+}
+.container{
+	width:80%;
+	padding-right:0px;
+	padding-left: 0px;
+/* 	background-color: #DDDDDD; */
+}
+.head{
+    width:auto;
+    height:40px;
+    margin-left: 0px;
+    padding-right: 0px;
+    background-color: #31b0d5;
+}
+.head a{
+    float: right;
+    height: 40px;
+}
+
+h3{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.body{
+    background-color: #ffffff;
+}
+.menu{
+    background-color:#ffffff ;
+	width:190px;
+}
+.menu a{
+    color: #444444;
+    width:190px;
+}
+
+
+.body .menu {
+    float: left;
+
+}
+
+.body .kehuguanli{
+    float: right;
+    width:80%;
+}
+.fenpage{
+	float:right;
+}
+.panel-footer{
+	height:100px;
+}
+.bottom_nav{
+	padding-bottom:50px;
+}
+td a{
+	color:blue;
+	width:auto;
+	padding-right:0px;
+}
+.panel-heading div{
+	display:inline;
+}
+.panel-body{
+	background-color: #DDDDDD;
+	
+}
+span{
+    float: right;
+}

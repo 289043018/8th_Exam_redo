@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+*{
+    margin: 0;
+    padding:0;
+}
+body{
+	background-image: url("0.jpg");
+}
+.head{
+    width:auto;
+    height:40px;
+    margin-left: 0px;
+    padding-right: 0px;
+    background-color: #31b0d5;
+}
+
+
+.panel-body{
+    height: 200px;
+}
+
+
+.loginform{
+	width:500px;
+	height:200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.head{
+    width:auto;
+    height:40px;
+    margin-left: 0px;
+    padding-right: 0px;
+    background-color: #31b0d5;
+}
+.body{
+    background-color: #ffffff;
+}
