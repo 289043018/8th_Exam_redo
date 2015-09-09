@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="head">
 			<a class="btn btn-primary"
-				href="<%= request.getContextPath() %>/Logout_Logout!Logout.action">退出</a>
+				href="<%= request.getContextPath() %>/Logout_Logout!Logout.do">退出</a>
 		</div>
 		<div class="body">
 			<div class="menu">
@@ -43,7 +43,7 @@
 					<div class="panel-heading">
 						<div>客户列表</div>
 						<a class="btn btn-primary btn-md" name="add"
-												href="<%= request.getContextPath() %>/doCustomer_toadd!toadd.action">新建</a>
+												href="<%= request.getContextPath() %>/doCustomer_toadd!toadd.do">新建</a>
 
 					</div>
 					<div class="panel-body">
@@ -67,9 +67,9 @@
 										<tr class="success">
 											<td>
 											<a class="btn btn-primary btn-sm" name="delet_id"
-											href="<%= request.getContextPath() %>/doCustomer_toupdate!toupdate.action?delet_id=${id}">编辑</a>
+											href="<%= request.getContextPath() %>/doCustomer_toupdate!toupdate.do?delet_id=${id}">编辑</a>
 											<a class="btn btn-primary btn-sm" name="delet_id"
-											href="<%= request.getContextPath() %>/doCustomer_delet!delet.action?delet_id=${id}">删除</a>
+											href="<%= request.getContextPath() %>/doCustomer_delet!delet.do?delet_id=${id}">删除</a>
 											<td align="center" name="first_name">${first_name}</td>
 											<td align="center" name="last_name">${last_name}</td>
 											<td align="center" name="address">${address.address}</td>
@@ -86,7 +86,7 @@
 						<div class="fenpage">
 							<nav class="bottom_nav">
 							<ul class="pagination">
-								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=1">&laquo;</a></li>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.do?pagenum=1">&laquo;</a></li>
 								<%
 								/* String str =(String) session.getAttribute("pagecount");
 								int pagecount = Integer.parseInt(str); */
@@ -96,11 +96,11 @@
 								<%
 									for (int curpage = 1; curpage <= pagecount; curpage++) {
 								%>
-								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=<%=curpage%>"><%=curpage%></a></li>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.do?pagenum=<%=curpage%>"><%=curpage%></a></li>
 								<%
 									} 
 								%>
-								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=<%=pagecount %>">&raquo;</a></li>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.do?pagenum=<%=pagecount %>">&raquo;</a></li>
 							</ul>
 							</nav>
 						</div>
