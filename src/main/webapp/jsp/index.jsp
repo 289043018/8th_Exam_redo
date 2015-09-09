@@ -66,17 +66,16 @@
 									<s:iterator id="customer" value="customerList">
 										<tr class="success">
 											<td>
-												<a class="btn btn-primary btn-sm" name="delet_id"
-												href="<%= request.getContextPath() %>/doCustomer_toupdate!toupdate.action?delet_id=${id}">编辑</a>
-												<a class="btn btn-primary btn-sm" name="delet_id"
-												href="<%= request.getContextPath() %>/doCustomer_delet!delet.action?delet_id=${id}">删除</a>
+											<a class="btn btn-primary btn-sm" name="delet_id"
+											href="<%= request.getContextPath() %>/doCustomer_toupdate!toupdate.action?delet_id=${id}">编辑</a>
+											<a class="btn btn-primary btn-sm" name="delet_id"
+											href="<%= request.getContextPath() %>/doCustomer_delet!delet.action?delet_id=${id}">删除</a>
 											<td align="center" name="first_name">${first_name}</td>
 											<td align="center" name="last_name">${last_name}</td>
 											<td align="center" name="address">${address.address}</td>
 											<td align="center" name="email">${email}</td>
 											<td width="20px" align="center" name="customer_id">${id}</td>
 											<td align="center" name="last_update">${lastupdate}</td>
-
 										</tr>
 									</s:iterator>
 								</tbody>
@@ -87,8 +86,21 @@
 						<div class="fenpage">
 							<nav class="bottom_nav">
 							<ul class="pagination">
-								<li><a href="index.jsp?curpage=1">&laquo;</a></li>
-								</li>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=1">&laquo;</a></li>
+								<%
+								/* String str =(String) session.getAttribute("pagecount");
+								int pagecount = Integer.parseInt(str); */
+								
+								int pagecount = Integer.parseInt(String.valueOf(session.getAttribute("pagecount")  != null ? session.getAttribute("pagecount"): "0").trim());
+								%>
+								<%
+									for (int curpage = 1; curpage <= pagecount; curpage++) {
+								%>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=<%=curpage%>"><%=curpage%></a></li>
+								<%
+									} 
+								%>
+								<li><a href="<%= request.getContextPath() %>/listCustomer!list.action?pagenum=<%=pagecount %>">&raquo;</a></li>
 							</ul>
 							</nav>
 						</div>

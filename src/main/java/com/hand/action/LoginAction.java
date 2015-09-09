@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.hand.Dao.CustomerDao;
+import com.hand.Dao.PageDao;
 import com.hand.POJO.Customer;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport {
 	private String uname;
 	private String pword;
+	private int pagecount;
 	@Override
 	public String execute() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession(); 
@@ -28,12 +30,15 @@ public class LoginAction extends ActionSupport {
 		 		 customer.setLast_name(pword);
 		 	        if(customerDao.check(customer)) {
 		 	        	session.removeAttribute("login_message");
-		 	            return SUCCESS;  
+		 	        	PageDao pageDao = new PageDao();
+		 	        	int pagecount = pageDao.getPageCount(50);
+		 	        	System.out.println("获得的总页数："+pagecount);
+		 	        	session.setAttribute("pagecount", pagecount);
+		 	        	return SUCCESS;  
 		 	        }
-		 	       session.setAttribute("login_message", "用户名或者密码错误！");
+		 	        session.setAttribute("login_message", "用户名或者密码错误！");
 		 	        return "input";
 		      }
-
 	}
 	
 

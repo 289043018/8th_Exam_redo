@@ -69,14 +69,28 @@ public class CustomerDao {
 	        return customer;      
 	    }
 	    
-	    public List<Customer> select(){
-	    	 tx = session.beginTransaction();  
-	    	 List<Customer> customer = session.createQuery("FROM Customer").list(); 	   
+	    public List<Customer> select(int pagesize,int pagenum){
+	    	 tx = session.beginTransaction();
+	    	 List<Customer> customer = session.createQuery("FROM Customer").setFirstResult((pagenum-1)*pagesize).setMaxResults(pagesize).list();
+//	    	 List<Customer> customer = session.createQuery("FROM Customer").list();
 	    	 tx.commit();
 		        HibernateUtil.closeSession();  
 	    	return customer;
 	    }
 	    
+//	    public void getPageCount(int pagecount){
+//	    	 tx = session.beginTransaction();
+////	    	 List<Customer> customer = session.createQuery("FROM Customer").setFirstResult((pagenum-1)*pagesize).setMaxResults(pagesize).list();
+//	    	 List list = session.createQuery("FROM Customer").list();
+////	    	 Iterator it = list.iterator(); 
+//	    	 Iterator iterator = 
+//					  list.iterator();
+//	    	 for (; iterator.hasNext();iterator.next()){
+//	    		 pagecount = pagecount+1;;
+//	    	 }
+//	    	 tx.commit();
+//		        HibernateUtil.closeSession();  
+//	    }
 	      
 	    public void update(int id,String first_name,String last_name,String email,Address address) {  
 	        tx = session.beginTransaction(); 

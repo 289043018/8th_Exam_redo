@@ -9,6 +9,7 @@ import java.util.Map;
 
 import com.hand.Dao.AddressDao;
 import com.hand.Dao.CustomerDao;
+import com.hand.Dao.PageDao;
 import com.hand.POJO.Address;
 import com.hand.POJO.Customer;
 import com.opensymphony.xwork2.ActionContext;
@@ -22,16 +23,9 @@ public class doCustomerAction extends ActionSupport {
 	private int address_id;
 	private int delet_id;
 	
+	private int pagenum = 1;
 	
 	public String add() throws Exception {
-		
-		/* 获取address列表 
-		 AddressDao addressDao = new AddressDao();
-		 List<Address> addressList = addressDao.select();
-		 Iterator<Address> address_it = addressList.iterator();
-		ActionContext.getContext().put("addressList", addressList);
-		System.out.println(addressList);
-		*/
 		CustomerDao customerDao = new CustomerDao();
 		Date date = new Date();
 		AddressDao addressDao = new AddressDao();
@@ -57,29 +51,24 @@ public class doCustomerAction extends ActionSupport {
 	public String update() throws Exception{
 		CustomerDao customerDao = new CustomerDao();
 		Customer customer = new Customer();
-//		 /* 获取address列表 */
-//		AddressDao addressDao = new AddressDao();
-//		 List<Address> addressList = addressDao.select();
-//		 Iterator<Address> address_it = addressList.iterator();
-//		ActionContext.getContext().put("addressList", addressList);
-//		System.out.println(addressList);
 		AddressDao addressDao = new AddressDao();
 		 address = addressDao.findById(address_id);
-//		 System.out.println(delet_id+first_name+last_name+email+address);
 		customerDao.update(delet_id,first_name,last_name,email,address);
 		return SUCCESS;
 	}
 	
 	public String list() throws Exception {
+//		int pagesize = 50;
 		CustomerDao customerDao = new CustomerDao();
-		List<Customer> customerList = customerDao.select();
+		List<Customer> customerList = customerDao.select(50,pagenum);
 		ActionContext.getContext().put("customerList", customerList);
 		/* 获取address列表 */
 		AddressDao addressDao = new AddressDao();
 		 List<Address> addressList = addressDao.select();
-//		 Iterator<Address> address_it = addressList.iterator();
 		ActionContext.getContext().put("addressList", addressList);
-//		System.out.println(addressList);
+		PageDao pageDao = new PageDao();
+		int pagecount = pageDao.getPageCount(50);
+		System.out.println("获得的总页数："+pagecount);
 		return SUCCESS;
 	}
 	
@@ -151,4 +140,13 @@ public class doCustomerAction extends ActionSupport {
 	public void setAddress_id(int address_id) {
 		this.address_id = address_id;
 	}
+
+	public int getPagenum() {
+		return pagenum;
+	}
+
+	public void setPagenum(int pagenum) {
+		this.pagenum = pagenum;
+	}
+	
 }
