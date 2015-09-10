@@ -1,36 +1,33 @@
 package com.hand.Dao;
 
-import java.io.Serializable;
-import java.sql.ResultSet;
+
 import java.util.Iterator;  
 import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;  
 import org.hibernate.Session;  
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.hand.POJO.Address;
 import com.hand.POJO.Customer;
-import com.hand.POJO.Payment;
-import com.hand.POJO.Rental;
-import com.hand.util.HibernateUtil;
-import com.opensymphony.xwork2.Result;  
+import com.hand.util.HibernateUtil; 
+
+@Repository
 public class CustomerDao {
 	private Session session;  
 	private Transaction tx;  
 
-	public CustomerDao(){
-		session = HibernateUtil.getSession();  
-	}
+//	public CustomerDao(){
+//		/*session = HibernateUtil.getSession();  */
+//	}
 
 
 	/*  
 	 * 将User对象插入到数据库中  
 	 * @param user  
 	 */  
-	public void create(Customer customer) {  
+	public void create(Customer customer) {
+		session = HibernateUtil.getSession(); 
 		try {  
 			tx = session.beginTransaction();  
 			session.save(customer);
@@ -40,12 +37,11 @@ public class CustomerDao {
 			System.out.println("插入事务回滚了");
 			HibernateUtil.rollback(tx);  
 		}
-//		finally {  
-//			HibernateUtil.closeSession();  
-//		}  
+ 
 	}  
 
 	public void delete(int customer_id) {  
+		session = HibernateUtil.getSession(); 
 		try {  
 			tx = session.beginTransaction();
 			Customer customer = 
@@ -57,12 +53,11 @@ public class CustomerDao {
 			HibernateUtil.rollback(tx);
 			System.out.println("删除事务回滚了");
 		}
-//		finally {  
-//			HibernateUtil.closeSession();  
-//		}  
+ 
 	}  
 
-	public Customer find(int id) {  
+	public Customer find(int id) { 
+		session = HibernateUtil.getSession(); 
 		Customer customer = null; 
 		try {  
 			tx = session.beginTransaction();  
@@ -73,23 +68,23 @@ public class CustomerDao {
 			HibernateUtil.rollback(tx);
 			System.out.println("查找id事务回滚了");
 		}
-//		finally {  
-//			HibernateUtil.closeSession();  
-//		}
+
 		return customer;
 	}
 
 	public List<Customer> select(int pagesize,int pagenum){
+		session = HibernateUtil.getSession(); 
 		tx = session.beginTransaction();
 		List<Customer> customer = session.createQuery("FROM Customer").
 				setFirstResult((pagenum-1)*pagesize).setMaxResults(pagesize).list();
 		tx.commit();
-//		HibernateUtil.closeSession();  
+
 		return customer;
 	}
 
 
 	public void update(int id,String first_name,String last_name,String email,Address address) {  
+		session = HibernateUtil.getSession(); 
 		try {  
 			tx = session.beginTransaction(); 
 			Customer customer = (Customer) session.get(Customer.class, id);
@@ -104,12 +99,11 @@ public class CustomerDao {
 			HibernateUtil.rollback(tx);
 			System.out.println("更新事务回滚了");
 		}
-//		finally {  
-//			HibernateUtil.closeSession();  
-//		}
+
 	}  
 
 	public boolean check(Customer customer) {  
+		session = HibernateUtil.getSession(); 
 		tx = session.beginTransaction();  
 		String sql = "select last_name from Customer where first_name='"+customer.getFirst_name()+"'";  
 		List list = session.createQuery(sql).list();  
@@ -119,12 +113,12 @@ public class CustomerDao {
 				String get = (String) it.next();  
 				System.out.println(get);  
 				if(get.equals(customer.getLast_name())) {  
-//					HibernateUtil.closeSession();  
+
 					return true;  
 				}  
 			}  
 		}  
-//		HibernateUtil.closeSession();  
+
 		return false;     
 	}  
 }

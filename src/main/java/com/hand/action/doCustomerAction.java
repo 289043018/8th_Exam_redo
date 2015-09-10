@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.hand.Dao.AddressDao;
 import com.hand.Dao.CustomerDao;
 import com.hand.Dao.PageDao;
@@ -25,10 +28,14 @@ public class doCustomerAction extends ActionSupport {
 	private int delet_id;
 	private int pagenum = 1;
 	
-	CustomerDao customerDao = new CustomerDao();
+//	CustomerDao customerDao;
+//	= new CustomerDao();
 	Customer customer = new Customer();
 	AddressDao addressDao = new AddressDao();
 	
+	ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
+	CustomerDao customerDao =(CustomerDao) ac.getBean("customerDao");
+    
 	//添加用户
 	public String add() throws Exception {
 		Date date = new Date();

@@ -4,6 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+
+  
+<!--     自动加载spring配置文件，这里的自动加载并不是说就不用调用获取，还是需要手动调用的 -->
+   <context-param>  
+    <param-name>contextConfigLocation</param-name>  
+    <param-value>classpath:applicationContext*.xml</param-value>  
+  </context-param> 
+     
    <filter>
    <filter-name>Struts2Filter</filter-name>
    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -13,7 +22,7 @@
     <filter-name>PermissionFilter</filter-name>
     <filter-class>com.hand.filter.PermissionFilter</filter-class>
   </filter> 
-   
+
     <filter-mapping>
     <filter-name>PermissionFilter</filter-name>
     <url-pattern>*.jsp</url-pattern>
@@ -23,4 +32,9 @@
    <filter-name>Struts2Filter</filter-name>
    <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+   <!-- 配置Spring的监听器，用于初始化ApplicationContext对象 -->  
+  <listener>  
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+  </listener>
 </web-app>
