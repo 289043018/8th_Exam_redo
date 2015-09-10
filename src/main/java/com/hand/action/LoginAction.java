@@ -1,17 +1,10 @@
 package com.hand.action;
 
-import java.io.PrintWriter;
-
-import javax.annotation.Resource;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.hand.Dao.CustomerDao;
 import com.hand.Dao.PageDao;
 import com.hand.POJO.Customer;
@@ -28,9 +21,8 @@ public class LoginAction extends ActionSupport {
 //	=new CustomerDao();
 	ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 	CustomerDao customerDao =(CustomerDao) ac.getBean("customerDao");
-	
-	 Customer customer = new Customer(); 
-	 private PageDao pageDao= new PageDao();
+	Customer customer =  (Customer) ac.getBean("customer");
+	 private PageDao pageDao= (PageDao) ac.getBean("pageDao");
 	 
 	public String Login() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession(); 

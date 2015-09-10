@@ -8,8 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Repository;
 //@Entity
 //@Table(name="customer")
+@Repository
 public class Customer{
 //	@Id @GeneratedValue
 //	@Column(name="customer_id")

@@ -1,6 +1,8 @@
 package com.hand.POJO;
 
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class Address {
 	private int address_id;
 	private String address;

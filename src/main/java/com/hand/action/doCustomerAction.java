@@ -30,12 +30,16 @@ public class doCustomerAction extends ActionSupport {
 	
 //	CustomerDao customerDao;
 //	= new CustomerDao();
-	Customer customer = new Customer();
-	AddressDao addressDao = new AddressDao();
+	
 	
 	ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"applicationContext.xml"});
 	CustomerDao customerDao =(CustomerDao) ac.getBean("customerDao");
-    
+	Customer customer =  (Customer) ac.getBean("customer");
+	AddressDao addressDao = (AddressDao) ac.getBean("addressDao");
+	
+	
+	
+	
 	//添加用户
 	public String add() throws Exception {
 		Date date = new Date();

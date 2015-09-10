@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.hand.POJO.Address;
 import com.hand.util.HibernateUtil;
-
+@Repository
 public class AddressDao {
 	 private Session session;  
 	    private Transaction tx;  

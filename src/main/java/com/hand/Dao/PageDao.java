@@ -8,10 +8,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
+import org.springframework.stereotype.Repository;
 
 import com.hand.POJO.Customer;
 import com.hand.util.HibernateUtil;
-
+@Repository
 public class PageDao {
 	private Session session;  
     private Transaction tx;  
