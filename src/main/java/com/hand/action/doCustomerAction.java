@@ -12,6 +12,7 @@ import com.hand.Dao.CustomerDao;
 import com.hand.Dao.PageDao;
 import com.hand.POJO.Address;
 import com.hand.POJO.Customer;
+import com.hand.util.HibernateUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,13 +25,15 @@ public class doCustomerAction extends ActionSupport {
 	private int delet_id;
 	private int pagenum = 1;
 	
+	CustomerDao customerDao = new CustomerDao();
+	Customer customer = new Customer();
+	AddressDao addressDao = new AddressDao();
+	
+	//添加用户
 	public String add() throws Exception {
-		CustomerDao customerDao = new CustomerDao();
 		Date date = new Date();
-		AddressDao addressDao = new AddressDao();
 		 address = addressDao.findById(address_id);
 		Timestamp time=new Timestamp (date.getTime());
-		 Customer customer = new Customer();
 		 customer.setFirst_name(first_name);
 		 customer.setLast_name(last_name);
 		 customer.setAddress(address);
@@ -38,71 +41,59 @@ public class doCustomerAction extends ActionSupport {
 		 customer.setStore_id(1);
 		 customer.setCreate_date(time);
 		 customerDao.create(customer);
-		 
+		 HibernateUtil.closeSession();
 		return SUCCESS;
 	}
 	
+	//删除用户
 	public String delet() throws Exception {
-		CustomerDao customerDao = new CustomerDao();
 		customerDao.delete(delet_id);
+		HibernateUtil.closeSession();
 		return SUCCESS;
 	}
+	//更新用户
 	public String update() throws Exception{
-		CustomerDao customerDao = new CustomerDao();
-		Customer customer = new Customer();
-		AddressDao addressDao = new AddressDao();
 		 address = addressDao.findById(address_id);
 		customerDao.update(delet_id,first_name,last_name,email,address);
+		HibernateUtil.closeSession();
 		return SUCCESS;
 	}
 	
+	//查询用户列表
 	public String list() throws Exception {
-//		int pagesize = 50;
-		CustomerDao customerDao = new CustomerDao();
 		List<Customer> customerList = customerDao.select(50,pagenum);
 		ActionContext.getContext().put("customerList", customerList);
 		/* 获取address列表 */
-		AddressDao addressDao = new AddressDao();
 		 List<Address> addressList = addressDao.select();
 		ActionContext.getContext().put("addressList", addressList);
-//		PageDao pageDao = new PageDao();
-//		int pagecount = pageDao.getPageCount();
-//		System.out.println("获得的总页数："+pagecount);
+		HibernateUtil.closeSession();
 		return SUCCESS;
 	}
 	
+	//跳转到更新用户页面之前，将用户信息和地址表加载出来
 	public String toupdate(){
-		AddressDao addressDao = new AddressDao();
 		 List<Address> addressList = addressDao.select();
-//		 Iterator<Address> address_it = addressList.iterator();
 		ActionContext.getContext().put("addressList", addressList);
-		CustomerDao customerDao = new CustomerDao();
 		Customer customer = customerDao.find(delet_id);
-//		List<Customer> clist ;
-//		clist.add(customer);
-//		ActionContext.getContext().put("clist", clist);
 		ActionContext.getContext().put("customer", customer);
-//		System.out.println(customer);
+		HibernateUtil.closeSession();
 		return "toupdate";
 	}
 	
-	public int getDelet_id() {
-		/* 获取address列表 */
-		AddressDao addressDao = new AddressDao();
-		 List<Address> addressList = addressDao.select();
-//		 Iterator<Address> address_it = addressList.iterator();
-		ActionContext.getContext().put("addressList", addressList);
-		return delet_id;
-	}
-
+	//跳转到新增用户页面之前，先加载地址列表
 	public String toadd(){
 		/* 获取address列表 */
-		AddressDao addressDao = new AddressDao();
 		 List<Address> addressList = addressDao.select();
-//		 Iterator<Address> address_it = addressList.iterator();
 		ActionContext.getContext().put("addressList", addressList);
+		HibernateUtil.closeSession();
 		return "toadd";
 	}
+	
+	
+	public int getDelet_id() {
+		return delet_id;
+	}
+	
 	public void setDelet_id(int delet_id) {
 		this.delet_id = delet_id;
 	}

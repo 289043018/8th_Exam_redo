@@ -12,8 +12,6 @@ public class Address {
 		this.address=address;
 	}
 
-
-	
 	public int getAddress_id() {
 		return address_id;
 	}

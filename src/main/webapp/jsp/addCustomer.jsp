@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="head">
 			<a class="btn btn-primary"
-				href="<%= request.getContextPath() %>/logout.action">退出</a>
+				href="<%= request.getContextPath() %>/Logout_Logout!Logout.do">退出</a>
 		</div>
 		<div class="body">
 			<div class="menu">
@@ -69,12 +69,6 @@
                         <label class="col-md-4 control-label">Address：</label>
                         <div class="dropdown">
                          <s:select name="address_id" list="addressList" listKey="address_id" listValue="address" headerKey="" headerValue="==请选择==" />   
-								<!-- <select class="btn btn-default" id="dlabel" name="address_id" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-								</select> -->
 							</div>
                     </div>
                     <div class="form-group">

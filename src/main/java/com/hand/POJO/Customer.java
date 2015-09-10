@@ -33,8 +33,8 @@ public class Customer{
 	private int store_id;
 	
 	private Timestamp create_date;
-	
-public int getStore_id() {
+
+	public int getStore_id() {
 		return store_id;
 	}
 

@@ -18,11 +18,11 @@
 	<!-- 开发模式下使用，这样可以打印出更加详细的错误信息，便于调试 -->
 	<constant name="struts.devMode" value="true"></constant>
 	<!-- 默认视图主题,一下3句话是将struts2的标签样式设置为空，方便我们调整页面样式 -->
-  <constant name="struts.ui.theme" value="simple"/> 
+  	<constant name="struts.ui.theme" value="simple"/> 
     <constant name="struts.ui.templateDir" value="template"/> 
-   <constant name="struts.ui.templateSuffix" value="ftl"/> 
+   	<constant name="struts.ui.templateSuffix" value="ftl"/> 
 
-<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
 	<!-- package标签包标签，用于区分不同的请求文件的标签，比方说 网站前台请求和网站后台请求 -->
 	<!-- name属性：包名，用于被别的包调用或者继承 -->

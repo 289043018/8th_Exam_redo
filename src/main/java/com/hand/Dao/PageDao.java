@@ -19,9 +19,6 @@ public class PageDao {
     public PageDao(){
     	session = HibernateUtil.getSession();  
     }
-	
-	
-	
 	public int  getPageCount(){
 		int rows = 0; 
    	 tx = session.beginTransaction();

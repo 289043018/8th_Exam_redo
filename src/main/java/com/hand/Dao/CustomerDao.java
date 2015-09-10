@@ -39,9 +39,10 @@ public class CustomerDao {
 		} catch (HibernateException e) { 
 			System.out.println("插入事务回滚了");
 			HibernateUtil.rollback(tx);  
-		} finally {  
-			HibernateUtil.closeSession();  
-		}  
+		}
+//		finally {  
+//			HibernateUtil.closeSession();  
+//		}  
 	}  
 
 	public void delete(int customer_id) {  
@@ -55,9 +56,10 @@ public class CustomerDao {
 		} catch (HibernateException e) {  
 			HibernateUtil.rollback(tx);
 			System.out.println("删除事务回滚了");
-		} finally {  
-			HibernateUtil.closeSession();  
-		}  
+		}
+//		finally {  
+//			HibernateUtil.closeSession();  
+//		}  
 	}  
 
 	public Customer find(int id) {  
@@ -70,9 +72,10 @@ public class CustomerDao {
 		} catch (HibernateException e) {  
 			HibernateUtil.rollback(tx);
 			System.out.println("查找id事务回滚了");
-		} finally {  
-			HibernateUtil.closeSession();  
 		}
+//		finally {  
+//			HibernateUtil.closeSession();  
+//		}
 		return customer;
 	}
 
@@ -81,7 +84,7 @@ public class CustomerDao {
 		List<Customer> customer = session.createQuery("FROM Customer").
 				setFirstResult((pagenum-1)*pagesize).setMaxResults(pagesize).list();
 		tx.commit();
-		HibernateUtil.closeSession();  
+//		HibernateUtil.closeSession();  
 		return customer;
 	}
 
@@ -100,9 +103,10 @@ public class CustomerDao {
 		} catch (HibernateException e) {  
 			HibernateUtil.rollback(tx);
 			System.out.println("更新事务回滚了");
-		} finally {  
-			HibernateUtil.closeSession();  
 		}
+//		finally {  
+//			HibernateUtil.closeSession();  
+//		}
 	}  
 
 	public boolean check(Customer customer) {  
@@ -120,7 +124,7 @@ public class CustomerDao {
 				}  
 			}  
 		}  
-		HibernateUtil.closeSession();  
+//		HibernateUtil.closeSession();  
 		return false;     
 	}  
 }

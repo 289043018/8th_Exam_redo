@@ -20,7 +20,7 @@ public class AddressDao {
 	    	 tx = session.beginTransaction();  
 	    	 List<Address> address = session.createQuery("FROM Address").list(); 	   
 	    	 tx.commit();
-		        HibernateUtil.closeSession();  
+//		        HibernateUtil.closeSession();  
 	    	return address;
 	    }
 	    

@@ -11,13 +11,18 @@ import org.apache.struts2.ServletActionContext;
 import com.hand.Dao.CustomerDao;
 import com.hand.Dao.PageDao;
 import com.hand.POJO.Customer;
-
+import com.hand.util.HibernateUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
 	private String uname;
 	private String pword;
 	private int pagecount;
+	
+	CustomerDao customerDao = new CustomerDao();  
+	 Customer customer = new Customer(); 
+	 PageDao pageDao = new PageDao();
+	 
 	public String Login() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession(); 
 /*		
@@ -31,24 +36,21 @@ public class LoginAction extends ActionSupport {
 	        out.close();  
 		}
 		*/
-		
-		
-		
+
 			 if (uname == null || uname.trim().equals("")||pword == null || pword.trim().equals(""))
 		      {
 		        	session.setAttribute("login_message", "用户名或者密码不能为空！");
 		        	return "tologin";
 		      }else{
-		    	  CustomerDao customerDao = new CustomerDao();  
-		 		 Customer customer = new Customer(); 
+		    	  
 		 		 customer.setFirst_name(uname);
 		 		 customer.setLast_name(pword);
 		 	        if(customerDao.check(customer)) {
 		 	        	session.removeAttribute("login_message");
-		 	        	PageDao pageDao = new PageDao();
 		 	        	int pagecount = pageDao.getPageCount();
 		 	        	System.out.println("获得的总页数："+pagecount);
 		 	        	session.setAttribute("pagecount", pagecount);
+		 	        	HibernateUtil.closeSession();
 		 	        	return SUCCESS;  
 		 	        }
 		 	        session.setAttribute("login_message", "用户名或者密码错误！");
