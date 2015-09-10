@@ -37,7 +37,7 @@ public class PermissionFilter implements Filter {
 		HttpSession session = req.getSession();
 		String flag =(String) session.getAttribute("flag");
 		
-		if(servletpath!= null && (servletpath.equals("/login.jsp")|| (servletpath.equals("/LoginServlet18")))){
+		if(servletpath!= null && (servletpath.equals("/jsp/login.jsp")|| (servletpath.equals("/Login_Login!Login.do")))){
 			chain.doFilter(request, response);
 			
 		}else{
@@ -46,12 +46,12 @@ public class PermissionFilter implements Filter {
 			}else if(flag != null && flag.equals("login_error")){
 				req.setAttribute("msg", "登录失败，请重新登录!!<br/>");
 				req.setAttribute("return_uri", servletpath);
-				RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/jsp/login.jsp");
 				rd.forward(req, resp);
 			}else{
 				req.setAttribute("msg", "您尚未登录！！");
 				req.setAttribute("return_uri", servletpath);
-				RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("/jsp/login.jsp");
 				rd.forward(req, resp);
 			}
 			
