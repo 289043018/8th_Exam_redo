@@ -119,7 +119,7 @@ public class CustomerDao {
 				String get = (String) it.next();  
 				System.out.println(get);  
 				if(get.equals(customer.getLast_name())) {  
-					HibernateUtil.closeSession();  
+//					HibernateUtil.closeSession();  
 					return true;  
 				}  
 			}  
