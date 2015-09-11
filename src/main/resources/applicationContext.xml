@@ -11,6 +11,11 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 <!-- 自动扫描与装配bean，如果扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean -->      
      <context:component-scan base-package="com.hand"></context:component-scan> 
+     
+     
+     
+     
+     
 
 <!-- 	<bean id="addressDao" class="com.hand.Dao.AddressDao"></bean>
 	<bean id="customerDao" class="com.hand.Dao.CustomerDao"></bean>
