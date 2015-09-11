@@ -1,6 +1,8 @@
 package com.hand.POJO;
 
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +12,12 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
-//@Entity
-//@Table(name="address")
+//@Repository
+@Entity
+@Table(name="address")
 public class Address {
 //	@Id  
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+//	@GeneratedValue
 //	 @Column(name="address_id")
 	private int address_id;
 //	@Column(name="address")
@@ -28,12 +30,16 @@ public class Address {
 		this.address=address;
 	}
 
+	@Id  
+	@GeneratedValue(strategy = GenerationType.AUTO) 
+//	 @Column(name="address_id")
 	public int getAddress_id() {
 		return address_id;
 	}
 	public void setAddress_id(int address_id) {
 		this.address_id = address_id;
 	}
+	@Column(name="address")
 	public String getAddress() {
 		return address;
 	}
