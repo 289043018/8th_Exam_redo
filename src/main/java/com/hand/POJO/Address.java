@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 @Entity
 @Table(name="address")
 public class Address {

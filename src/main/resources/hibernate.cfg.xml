@@ -14,7 +14,7 @@
 <!-- <mapping resource="Address.hbm.xml"/> -->
 <!-- 基于annotation的配置 -->
         <mapping class="com.hand.POJO.Address"/>
-
-<mapping resource="Customer.hbm.xml"/>
+		<mapping class="com.hand.POJO.Customer"/>
+<!-- <mapping resource="Customer.hbm.xml"/> -->
 </session-factory>
 </hibernate-configuration> 
